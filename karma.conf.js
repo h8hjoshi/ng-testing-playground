@@ -36,6 +36,16 @@ module.exports = function (config) {
       }
     },
     singleRun: true,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    coverageIstanbulReporter: {
+      reports: ['html', 'lcovonly'],
+      fixWebpackSourcePaths: true,
+      thresholds: {
+        statements: 100,
+        lines: 100,
+        branches: 100,
+        functions: 100
+      }
+    }
   });
 };

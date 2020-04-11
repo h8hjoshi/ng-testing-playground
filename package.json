@@ -1,11 +1,11 @@
 {
-  "name": "ng4-test",
+  "name": "ng-testing-playground",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0 --watch --public-host --disable-host-check",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test --no-watch --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
