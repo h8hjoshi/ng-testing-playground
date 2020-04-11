@@ -1,7 +1,9 @@
 <div *ngIf="todo" class="todo">
   <div class="title" ngClass="{{todo.completed}}">
-    <input type="checkbox" name="todo" [(checked)]="todo.completed" (click)="toggle()">
     {{todo.title}}
+  </div>
+  <div class="markCompleted">
+    Mark as complete? <input type="checkbox" name="todo" [(checked)]="todo.completed" (click)="toggle()">
   </div>
   <div class="notes">
     {{todo.notes}}

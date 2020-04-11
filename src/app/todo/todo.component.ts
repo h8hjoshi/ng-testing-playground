@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../model/todo';
+import { ActivatedRoute } from '@angular/router';
+import { TodoService } from '../services/todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -8,15 +10,19 @@ import { Todo } from '../model/todo';
 })
 export class TodoComponent implements OnInit {
 
-  @Input()
   todo: Todo;
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute, private todoService: TodoService) { }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(params => {
+      const id = +params.get("id");
+      console.log("Fetching details for Todo: ", id);
+      this.todo = this.todoService.findById(id);
+    });
   }
 
   toggle() {
-    this.todo.completed = !this.todo.completed;
+    this.todoService.markAsComplete(this.todo.id, !this.todo.completed);
   }
 }
