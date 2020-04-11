@@ -1,0 +1,15 @@
+version: "3"
+services:
+  nodedev:
+    image: coolersport/nodedev
+    container_name: nodedev
+    environment:
+      CHROME_BIN: /usr/bin/chromium-browser
+    volumes:
+      - $PWD:$PWD:z
+      - nodedev:/home/node/store
+    working_dir: $PWD
+    ports:
+      - "4200:4200"
+volumes:
+  nodedev:
