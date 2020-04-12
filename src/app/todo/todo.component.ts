@@ -17,12 +17,13 @@ export class TodoComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
       const id = +params.get("id");
-      console.log("Fetching details for Todo: ", id);
       this.todo = this.todoService.findById(id);
+      console.log(this.todo);
     });
   }
 
   toggle() {
     this.todoService.markAsComplete(this.todo.id, !this.todo.completed);
+    this.todo.completed = !this.todo.completed;
   }
 }
